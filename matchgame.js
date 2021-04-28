@@ -1,5 +1,6 @@
-// Created a ul with an id "gameBoard" and added an eventlistener.
-document.querySelector('#gameBoard').addEventListener('click', matchingCards);
+// Access a ul with the id gameBoard and add an eventlistener.
+document.querySelector('#gameBoard').addEventListener('click', matchingCards)
+// Access a button and add an eventlistener for a click even
 document.querySelector('button').addEventListener('click' , shuffleCards)
 // Global variables
 // gameOrder holds the order of cards' positions of the current game
@@ -19,18 +20,19 @@ function shuffleCards() {
         card4 = 'sm5.jpg',
         card5 = 'sm6.jpg',
         cards = [card1, card1, card2, card2, card3, card3, card4, card4, card5, card5];
-    // deck holds all the li elements with the class 'card'
+    // deck holds all the section elements with the class 'card'
     const deck = document.querySelectorAll('.card');
     //In deck, for each card, do the following:
     deck.forEach(card => {
         // Create variable, random.
         let random;
         
-        // At least once, generator a random number and store it the variable.
+        // At least once, generate a random number and store it in a variable.
         // Repeat that action until variable, random, is given a value, representing an index in array, cards, 
         // that is not undefined.
         do {
             random = Math.floor(Math.random() * 10)
+            console.log(random)
         } while (cards[random] === undefined)
 
         //Store card that's in array, cards, at index, random.
@@ -43,6 +45,7 @@ function shuffleCards() {
         //of array, cards, would be decreased, meaning its indexes would go from 0 - 8, then 0 - 7,and so forth.
         delete cards[random];
     });
+
     console.log(gameOrder);
 }
 //Calling, FOR NOW, function, shuffleCards() to shuffle cards at page load. 
@@ -59,6 +62,7 @@ function matchingCards(e) {
         selected.push(e.target);
         e.target.style.backgroundImage = `url( ${gameOrder[cardNumber]}`;
     }
+    console.log(selected)
     //If the length of array, selected, is 2 (I.E. user has clicked two cards)
         //If the background image of element in array, selected, at index 0 is the same as 
         //the background image of element in array, selected, at index 1 (I.E. Check if cards match)
